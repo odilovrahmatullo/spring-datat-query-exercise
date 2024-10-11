@@ -1,0 +1,2 @@
+### create student course
+POST localhost:8080/student_course/

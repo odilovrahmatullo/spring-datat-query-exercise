@@ -1,0 +1,50 @@
+### Create student
+POST localhost:8080/student
+Content-Type: application/json
+
+{
+  "name": "Vali",
+  "surname": "Valiyev",
+  "age": 20,
+  "gender": "MALE",
+  "level": "2"
+}
+
+### Get all students
+GET localhost:8080/student
+
+### GET by id
+GET localhost:8080/student/3
+
+### UPDATE student
+PUT localhost:8080/student/3
+Content-Type: application/json
+
+{
+  "level": "4",
+  "age": 22
+}
+
+### Delete student
+DELETE localhost:8080/student/2
+
+### Get by name
+GET localhost:8080/student/by-name/Ali
+
+### Get by surname
+GET localhost:8080/student/by-surname/Valiyev
+
+### Get by gender
+GET localhost:8080/student/by-gender/MALE
+
+### Get by age
+GET localhost:8080/student/by-age/21
+
+### Get by level
+GET localhost:8080/student/by-level/3
+
+### GET by date
+GET localhost:8080/student/by-created_date/2024-10-11
+
+### GET by dates
+GET localhost:8080/student/by-created_date/2024-10-01/2024-11-01

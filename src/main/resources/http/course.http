@@ -1,0 +1,42 @@
+### Create student
+POST localhost:8080/course
+Content-Type: application/json
+
+{
+  "name": "English",
+  "duration": 9,
+  "price": 600000
+}
+
+### Get all course
+GET localhost:8080/course
+
+### Get course by id
+GET localhost:8080/course/2
+
+### UPDATE course
+PUT localhost:8080/course/2
+Content-Type: application/json
+
+{
+  "duration": 3
+
+}
+
+### Delete course
+DELETE localhost:8080/course/1
+
+### Get by name
+GET localhost:8080/course/by-name/Java
+
+### Get by price
+GET localhost:8080/course/by-price/550000
+
+### Get by duration
+GET localhost:8080/course/by-duration/11
+
+### Get by prices
+GET localhost:8080/course/by-price/500000/700000
+
+### Get by dates
+GET localhost:8080/course/by-created_date/2024-10-01/2024-11-01
