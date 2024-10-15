@@ -1,2 +1,86 @@
 ### create student course
-POST localhost:8080/student_course/
+POST localhost:8080/student_course
+Content-Type: application/json
+
+{
+  "studentId": "3",
+  "courseId": "1",
+  "mark": "2"
+}
+
+### update student course
+PUT localhost:8080/student_course/2
+Content-Type: application/json
+
+{
+  "studentId": 3,
+  "courseId": 1,
+  "mark": 5
+}
+
+### get student course by id
+GET localhost:8080/student_course/3
+
+### get student detail id
+GET localhost:8080/student_course/detail/
+
+### DELETE student course
+DELETE localhost:8080/student_course/2
+
+### GET all student course
+GET localhost:8080/student_course
+
+### GET student Grade given Date
+GET localhost:8080/student_course/3/2024-10-12
+
+### GET student Grade between two Dates
+GET localhost:8080/student_course/3/2024-10-10/2024-10-12
+
+### GET student Grades as dates descent by studentid
+GET localhost:8080/student_course/getMarks/3
+
+### GET student's grades from given course as dates descent by studentid and course id
+GET localhost:8080/student_course/student/3/course/1
+
+### GET student's Last grade and course by studentid
+GET localhost:8080/student_course/last_grade/3
+
+### GET student's Last 3 grades and course by studentid
+GET localhost:8080/student_course/last_3grades/3
+
+### GET student's First grade and course by studentid
+GET localhost:8080/student_course/first_grade/3
+
+### GET student's First grade by given course by studentid
+GET localhost:8080/student_course/first_grade/3/1
+
+### GET student's average grade by given course by studentid
+GET localhost:8080/student_course/average/3
+
+### GET student's average grade by given course by studentid
+GET localhost:8080/student_course/average/3/1
+
+### Count
+GET localhost:8080/student_course/count/3/4
+
+### GET average GRADE BY GIVEN COURSE
+GET localhost:8080/student_course/averageGradesOfCourse/3
+
+### GET MAX GRADE BY GIVEN COURSE
+GET localhost:8080/student_course/maxGradesOfCourse/1
+
+### GET COunt GRADE BY GIVEN COURSE
+GET localhost:8080/student_course/countGradesOfCourse/1
+
+### Pagination
+GET localhost:8080/student_course/pagination?page=1&size=2
+
+### Pagination get by studentId
+GET localhost:8080/student_course/pagination/student?student_id=3&page=2&size=2
+
+### Pagination get by studentId
+GET localhost:8080/student_course/pagination/course?course_id=3&page=1&size=3
+
+
+
+

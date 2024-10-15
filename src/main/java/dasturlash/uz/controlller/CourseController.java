@@ -2,9 +2,11 @@ package dasturlash.uz.controlller;
 
 
 import dasturlash.uz.dto.CourseDTO;
+import dasturlash.uz.dto.CourseUpdateDTO;
 import dasturlash.uz.service.CourseService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +34,7 @@ public class CourseController {
         return ResponseEntity.ok(courseService.getById(id));
     }
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody CourseDTO dto) {
+    public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody CourseUpdateDTO dto) {
         return ResponseEntity.ok(courseService.update(id,dto));
     }
 
@@ -64,6 +66,28 @@ public class CourseController {
     @GetMapping("/by-created_date/{created_date1}/{created_date2}")
     public ResponseEntity<List<CourseDTO>>getCourseByDates(@PathVariable LocalDate created_date1, @PathVariable LocalDate created_date2) {
         return ResponseEntity.ok(courseService.getCourseByDates(created_date1,created_date2));
+    }
+
+    @GetMapping("/pagination")
+    public ResponseEntity<Page<CourseDTO>> getPagination(@RequestParam Integer page,
+                                                         @RequestParam Integer size) {
+        return ResponseEntity.ok(courseService.pagination((page-1),size));
+    }
+
+    @GetMapping("/pagPrice")
+    public ResponseEntity<Page<CourseDTO>> paginationByPrice(@RequestParam Double price,
+                                                             @RequestParam Integer page,
+                                                             @RequestParam Integer size) {
+        return ResponseEntity.ok(courseService.paginationByPrice(price,(page-1),size));
+    }
+
+
+    @GetMapping("/pagPriceBetween")
+    public ResponseEntity<Page<CourseDTO>> paginationByPrice(@RequestParam Double price1,
+                                                             @RequestParam Double price2,
+                                                             @RequestParam Integer page,
+                                                             @RequestParam Integer size) {
+        return ResponseEntity.ok(courseService.paginationByPriceBetween(price1,price2,(page-1),size));
     }
 
 

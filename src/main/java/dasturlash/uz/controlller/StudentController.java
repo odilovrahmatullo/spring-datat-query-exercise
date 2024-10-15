@@ -2,10 +2,12 @@ package dasturlash.uz.controlller;
 
 import dasturlash.uz.dto.CourseDTO;
 import dasturlash.uz.dto.StudentDTO;
+import dasturlash.uz.dto.StudentUpdateDTO;
 import dasturlash.uz.enums.Gender;
 import dasturlash.uz.service.StudentService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,13 +34,13 @@ public class StudentController {
     public ResponseEntity<StudentDTO> getById(@PathVariable Integer id) {
         return ResponseEntity.ok(studentService.getById(id));
     }
-    @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody StudentDTO dto) {
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody StudentUpdateDTO dto) {
         return ResponseEntity.ok(studentService.update(id,dto));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Integer id) {
+    public ResponseEntity<String> delete(@PathVariable Integer id) {
          return ResponseEntity.ok(studentService.delete(id));
     }
 
@@ -75,5 +77,25 @@ public class StudentController {
         return ResponseEntity.ok(studentService.getStudentsByDates(created_date1, created_date2));
 
     }
+
+    @GetMapping("/pagination")
+    public ResponseEntity<Page<StudentDTO>> all(@RequestParam(value = "page", defaultValue = "4" ) Integer page,
+                                                @RequestParam(value = "size", defaultValue = "2") Integer size) {
+        return ResponseEntity.ok(studentService.pagination((page-1),size));
+    }
+
+    @GetMapping("/pagLevel/{level}")
+    public ResponseEntity<Page<StudentDTO>> allByLevel(@PathVariable String level,
+                                                @RequestParam(defaultValue = "1" ) Integer page,
+                                                @RequestParam(defaultValue = "2") Integer size) {
+        return ResponseEntity.ok(studentService.paginationByLevel(level,(page-1),size));
+    }
+    @GetMapping("/pagGender/{gender}")
+    public ResponseEntity<Page<StudentDTO>> paginationByGender(@PathVariable Gender gender,
+                                                       @RequestParam(defaultValue = "2" ) Integer page,
+                                                       @RequestParam(defaultValue = "3") Integer size) {
+        return ResponseEntity.ok(studentService.paginationByGender(gender,(page-1),size));
+    }
+
 
 }
