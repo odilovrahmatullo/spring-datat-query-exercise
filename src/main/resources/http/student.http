@@ -58,3 +58,12 @@ GET localhost:8080/student/pagLevel/3?page=2&size=4
 
 ### Get by Gender
 GET localhost:8080/student/pagGender/MALE?page=1&size=4
+
+### Filter Student
+POST localhost:8080/student/filter?page=1&size=10
+Content-Type: application/json
+
+{
+  "name": "Ali"
+}
+

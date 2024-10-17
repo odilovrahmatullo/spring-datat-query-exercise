@@ -4,7 +4,6 @@ import dasturlash.uz.dto.StudentCourseDTO;
 import dasturlash.uz.dto.StudentGpaDTO;
 import dasturlash.uz.entity.StudentCourseMarkEntity;
 import jakarta.transaction.Transactional;
-import org.hibernate.mapping.Selectable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
@@ -12,7 +11,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 

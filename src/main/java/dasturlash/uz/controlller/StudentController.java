@@ -1,6 +1,7 @@
 package dasturlash.uz.controlller;
 
 import dasturlash.uz.dto.CourseDTO;
+import dasturlash.uz.dto.FilterDTO;
 import dasturlash.uz.dto.StudentDTO;
 import dasturlash.uz.dto.StudentUpdateDTO;
 import dasturlash.uz.enums.Gender;
@@ -96,6 +97,14 @@ public class StudentController {
                                                        @RequestParam(defaultValue = "3") Integer size) {
         return ResponseEntity.ok(studentService.paginationByGender(gender,(page-1),size));
     }
+
+    @PostMapping("/filter")
+    private ResponseEntity<Page<StudentDTO>> filter(@RequestParam(value = "page", defaultValue = "1") int page,
+                                                    @RequestParam(value = "size", defaultValue = "10") int size,
+                                                    @RequestBody FilterDTO filterDTO) {
+        return ResponseEntity.ok(studentService.filter(filterDTO, page - 1, size));
+    }
+
 
 
 }

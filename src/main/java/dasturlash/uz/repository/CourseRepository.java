@@ -55,7 +55,7 @@ public interface CourseRepository extends CrudRepository<CourseEntity,Integer> {
     );
 
 
-
+    //Pagination
     @Query(value = "From CourseEntity c order by c.dateTime desc ")
     Page<CourseEntity> getAllCourses(Pageable pageable);
 

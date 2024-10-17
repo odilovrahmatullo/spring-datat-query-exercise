@@ -3,9 +3,9 @@ POST localhost:8080/course
 Content-Type: application/json
 
 {
-  "name": "EnglishBeginner",
+  "name": "EnglishPre",
   "duration": 9,
-  "price": 600000
+  "price": 700000
 }
 
 ### Get all course
@@ -49,3 +49,13 @@ GET localhost:8080/course/pagPrice?price=600000&page=1&size=2
 
 ### Pagination by between price
 GET localhost:8080/course/pagPriceBetween?price1=500000&price2=700000&page=1&size=2
+
+### Filter Course
+POST localhost:8080/course/filter?page=1&size=5
+Content-Type: application/json
+
+{
+  "name": "english",
+  "price": 600000
+}
+
