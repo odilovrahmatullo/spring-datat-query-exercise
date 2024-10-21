@@ -64,6 +64,6 @@ POST localhost:8080/student/filter?page=1&size=10
 Content-Type: application/json
 
 {
-  "name": "Ali"
+  "from": "2024-10-21"
 }
 

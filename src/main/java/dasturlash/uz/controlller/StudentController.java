@@ -1,6 +1,6 @@
 package dasturlash.uz.controlller;
 
-import dasturlash.uz.dto.CourseDTO;
+
 import dasturlash.uz.dto.FilterDTO;
 import dasturlash.uz.dto.StudentDTO;
 import dasturlash.uz.dto.StudentUpdateDTO;

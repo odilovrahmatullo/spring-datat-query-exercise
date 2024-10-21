@@ -5,12 +5,13 @@ import dasturlash.uz.dto.FilterResultDTO;
 import dasturlash.uz.dto.StudentDTO;
 import dasturlash.uz.entity.StudentEntity;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,12 +44,14 @@ public class CustomStudentRepository {
             params.put("gender", filter.getGender());
         }
         if(filter.getFrom()!=null) {
-            conditions.append("and s.from>=:from ");
-            params.put("from", filter.getFrom());
+            LocalDateTime fromDateTime = LocalDateTime.of(filter.getFrom(), LocalTime.MIN);
+            conditions.append("and s.dateTime>=:from ");
+            params.put("from", fromDateTime);
         }
         if(filter.getTo()!=null) {
-            conditions.append("and s.to<=:to ");
-            params.put("to", filter.getTo());
+            conditions.append("and s.dateTime<=:to ");
+            LocalDateTime toDateTime = LocalDateTime.of(filter.getTo(), LocalTime.MAX);
+            params.put("to", toDateTime);
         }
 
         StringBuilder selectBuilder = new StringBuilder("from StudentEntity as s where 1=1 ");

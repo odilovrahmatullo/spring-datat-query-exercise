@@ -6,13 +6,11 @@ import dasturlash.uz.dto.StudentDTO;
 import dasturlash.uz.dto.StudentUpdateDTO;
 import dasturlash.uz.entity.StudentEntity;
 import dasturlash.uz.enums.Gender;
-import dasturlash.uz.repository.CourseRepository;
 import dasturlash.uz.repository.CustomStudentRepository;
 import dasturlash.uz.repository.StudentRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -148,7 +146,7 @@ public class StudentService {
     }
 
     public Page<StudentDTO> filter(FilterDTO filterDTO, int page, int size) {
-        FilterResultDTO<StudentEntity> result = customStudentRepository.filter(filterDTO,page,size);
+         FilterResultDTO<StudentEntity> result = customStudentRepository.filter(filterDTO,page,size);
          List<StudentDTO> dtoList = changerDTOList(result.getContents());
          PageRequest pageRequest = PageRequest.of(page, size);
          return new PageImpl<>(dtoList,pageRequest,result.getTotal());
